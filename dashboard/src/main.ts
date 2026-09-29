@@ -2,6 +2,7 @@ import './style.css';
 import L from 'leaflet';
 import type { LatLngBoundsExpression } from 'leaflet';
 import { createMap } from './map/createMap';
+import { basemaps } from './map/basemaps';
 import { createLayerManager, setLayerVisible } from './map/layerManager';
 import { createSlopeLayer, restyleSlopes } from './map/slopeLayer';
 import { drawSources } from './map/sourceLayer';
@@ -14,6 +15,7 @@ import { renderLegend } from './ui/legend';
 import { renderDisclaimer } from './ui/disclaimer';
 import { renderEmptyPanel, renderSlopePanel } from './ui/slopePanel';
 import { bindLayerControls } from './ui/layerControl';
+import { bindBasemapControl } from './ui/basemapControl';
 import { AnimationController } from './animation/animationController';
 import { animateRunoutPaths } from './animation/runoutAnimator';
 
@@ -34,7 +36,9 @@ const state: DashboardState = {
   },
 };
 
-const map = createMap('map');
+const dashboardMap = createMap('map');
+const { map } = dashboardMap;
+let activeBasemapLayer = dashboardMap.basemapLayer;
 const statusEl = document.getElementById('map-status') as HTMLElement;
 const panelEl = document.getElementById('panel-content') as HTMLElement;
 const legendEl = document.getElementById('legend') as HTMLElement;
@@ -279,6 +283,20 @@ loadDashboardData()
 
     searchInput.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') searchButton.click();
+    });
+
+    bindBasemapControl((basemapKey) => {
+      try {
+        const nextBasemapLayer = basemaps[basemapKey].createLayer();
+        if (map.hasLayer(activeBasemapLayer)) map.removeLayer(activeBasemapLayer);
+        nextBasemapLayer.addTo(map);
+        nextBasemapLayer.bringToBack();
+        activeBasemapLayer = nextBasemapLayer;
+        setStatus(`Basemap changed to ${basemaps[basemapKey].label}.`);
+      } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : String(error);
+        setStatus(`Could not change basemap: ${message}`);
+      }
     });
 
     bindLayerControls({

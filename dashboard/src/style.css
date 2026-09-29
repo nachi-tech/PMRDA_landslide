@@ -69,7 +69,7 @@ code { background: #e2e8f0; padding: 0.1rem 0.25rem; border-radius: 0.25rem; }
 .swatch.b-both { background: #d946ef; }
 .line-swatch.ridge { border-color: #374151; border-style: dashed; }
 
-.search-row, .toolbar, .layer-toggles, .panel-card, .disclaimer {
+.search-row, .toolbar, .basemap-control, .layer-toggles, .panel-card, .disclaimer {
   margin-bottom: 1rem;
 }
 .search-row label { display: block; font-weight: 700; margin-bottom: 0.35rem; }
@@ -77,6 +77,8 @@ code { background: #e2e8f0; padding: 0.1rem 0.25rem; border-radius: 0.25rem; }
 .search-controls input { min-width: 0; flex: 1; border: 1px solid #cbd5e1; border-radius: 0.55rem; padding: 0.48rem 0.6rem; }
 .toolbar { display: flex; flex-wrap: wrap; gap: 0.45rem; }
 .toolbar #animate-button { background: #047857; color: #fff; border-color: #047857; }
+.basemap-control label { display: block; font-weight: 700; margin-bottom: 0.35rem; }
+.basemap-control select { width: 100%; border: 1px solid #cbd5e1; border-radius: 0.55rem; padding: 0.48rem 0.6rem; background: #fff; font: inherit; }
 .layer-toggles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.35rem; font-size: 0.9rem; }
 .layer-toggles label { display: flex; gap: 0.35rem; align-items: center; }
 

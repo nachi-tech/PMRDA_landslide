@@ -1,16 +1,19 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { basemaps, type BasemapKey } from './basemaps';
 
-export function createMap(containerId: string): L.Map {
+export interface DashboardMap {
+  map: L.Map;
+  basemapLayer: L.TileLayer;
+}
+
+export function createMap(containerId: string, initialBasemap: BasemapKey = 'osm'): DashboardMap {
   const map = L.map(containerId, {
     zoomControl: true,
     preferCanvas: true,
   }).setView([18.75, 73.55], 10);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; OpenStreetMap contributors',
-  }).addTo(map);
+  const basemapLayer = basemaps[initialBasemap].createLayer().addTo(map);
 
-  return map;
+  return { map, basemapLayer };
 }

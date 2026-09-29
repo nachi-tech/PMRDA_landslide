@@ -32,6 +32,16 @@
             <button id="pause-button" type="button" disabled>Pause</button>
             <button id="reset-button" type="button">Reset</button>
           </div>
+          <div class="basemap-control">
+            <label for="basemap-select">Basemap</label>
+            <select id="basemap-select">
+              <option value="osm" selected>OpenStreetMap</option>
+              <option value="cartoLight">Carto Light</option>
+              <option value="cartoDark">Carto Dark</option>
+              <option value="mapboxStreets">Mapbox Streets</option>
+              <option value="mapboxSatellite">Mapbox Satellite</option>
+            </select>
+          </div>
           <div class="layer-toggles" aria-label="Layer toggles">
             <label><input id="toggle-sources" type="checkbox" checked /> Sources</label>
             <label><input id="toggle-envelopes" type="checkbox" checked /> Envelopes</label>

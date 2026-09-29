@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMRDA Landslide Screening Dashboard</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <div>
+          <h1>PMRDA Landslide Screening Dashboard</h1>
+          <p>Interactive inspection of existing slope-unit, source-zone, runout and exposure outputs.</p>
+        </div>
+      </header>
+      <main class="layout">
+        <section class="map-section" aria-label="Map">
+          <div id="map"></div>
+          <div id="legend" class="legend"></div>
+          <div id="map-status" class="map-status" role="status" aria-live="polite">Loading dashboard data…</div>
+        </section>
+        <aside class="side-panel" aria-label="Selected slope details">
+          <div class="search-row">
+            <label for="su-search">Search SU_ID</label>
+            <div class="search-controls">
+              <input id="su-search" type="search" placeholder="e.g. 123" />
+              <button id="su-search-button" type="button">Go</button>
+            </div>
+          </div>
+          <div class="toolbar">
+            <button id="animate-button" type="button" disabled>Animate runout</button>
+            <button id="pause-button" type="button" disabled>Pause</button>
+            <button id="reset-button" type="button">Reset</button>
+          </div>
+          <div class="layer-toggles" aria-label="Layer toggles">
+            <label><input id="toggle-sources" type="checkbox" checked /> Sources</label>
+            <label><input id="toggle-envelopes" type="checkbox" checked /> Envelopes</label>
+            <label><input id="toggle-buildings" type="checkbox" checked /> Exposed buildings</label>
+            <label><input id="toggle-ridges" type="checkbox" checked /> Ridges</label>
+          </div>
+          <div id="panel-content" class="panel-content"></div>
+          <div id="disclaimer" class="disclaimer"></div>
+        </aside>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

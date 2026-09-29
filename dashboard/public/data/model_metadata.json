@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-09-29T06:33:36.787187+00:00",
+  "analysis_crs": "EPSG:32643",
+  "display_crs": "EPSG:4326",
+  "source": "Existing PMRDA QGIS/Python analytical outputs; browser does not recompute landslide/source/runout/exposure metrics.",
+  "scenario_parameters": {
+    "segmentation_min_slope_deg": 20.0,
+    "source_min_slope_deg": 20.0,
+    "source_susceptibility_classes": [
+      4,
+      5
+    ],
+    "source_min_area_m2": 5000.0,
+    "source_connectivity": "candidate source zones are associated to slope units by SU_ID in preprocessing",
+    "runout_neighbourhood": "D8/down-gradient stored polyline paths from analytical output",
+    "runout_reach_angle_deg": 12.0,
+    "reach_angle_min_distance_m": 30.0,
+    "low_slope_stop_deg": 5.0,
+    "low_slope_consecutive_cells": 5,
+    "maximum_runout_m": 3000.0,
+    "maximum_seeds_per_source": 30,
+    "minimum_seed_spacing_m": 30.0,
+    "runout_half_width_m": 30.0,
+    "model_type": "regional deterministic screening / stored geometry visualisation",
+    "animation_is_physical_time": false
+  },
+  "warnings": [
+    "Regional screening output, not engineering-scale design or real-time simulation.",
+    "Susceptibility fields are descriptors, not failure probabilities.",
+    "Runout animation is a progressive reveal of stored path geometry, not travel-time or velocity modelling.",
+    "Building exposure means footprint intersection with screening geometry, not damage or risk.",
+    "Metric attributes were calculated in the analytical CRS and must not be recalculated from EPSG:4326 display geometry."
+  ],
+  "export_counts": {
+    "slope_units": 36431,
+    "source_zones": 4772,
+    "runout_paths": 25747,
+    "runout_envelopes": 4772,
+    "exposed_buildings": 5908
+  },
+  "sample_export": false
+}

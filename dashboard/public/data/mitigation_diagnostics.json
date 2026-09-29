@@ -1,0 +1,170 @@
+{
+  "generated_at": "2026-09-29T06:48:16.743180+00:00",
+  "diagnostics": [
+    {
+      "METRIC": "policy_summary",
+      "POLICY": "shotcrete",
+      "COUNT": 36431,
+      "MEAN_SCORE": 24.56,
+      "MIN_SCORE": 0.0,
+      "MAX_SCORE": 100.0,
+      "MEAN_CONFIDENCE": 31.16,
+      "TOP_POLICY_COUNT": 1694,
+      "CLOSE_SCORE_SLOPE_COUNT": 25760,
+      "NO_CONFIDENT_INTERVENTION_COUNT": 26815
+    },
+    {
+      "METRIC": "policy_summary",
+      "POLICY": "geometry",
+      "COUNT": 36431,
+      "MEAN_SCORE": 9.66,
+      "MIN_SCORE": 0.0,
+      "MAX_SCORE": 100.0,
+      "MEAN_CONFIDENCE": 31.51,
+      "TOP_POLICY_COUNT": 1404,
+      "CLOSE_SCORE_SLOPE_COUNT": 25760,
+      "NO_CONFIDENT_INTERVENTION_COUNT": 26815
+    },
+    {
+      "METRIC": "policy_summary",
+      "POLICY": "drainage",
+      "COUNT": 36431,
+      "MEAN_SCORE": 29.99,
+      "MIN_SCORE": 0.0,
+      "MAX_SCORE": 50.0,
+      "MEAN_CONFIDENCE": 9.0,
+      "TOP_POLICY_COUNT": 6045,
+      "CLOSE_SCORE_SLOPE_COUNT": 25760,
+      "NO_CONFIDENT_INTERVENTION_COUNT": 26815
+    },
+    {
+      "METRIC": "policy_summary",
+      "POLICY": "jute",
+      "COUNT": 36431,
+      "MEAN_SCORE": 30.81,
+      "MIN_SCORE": 0.0,
+      "MAX_SCORE": 98.86,
+      "MEAN_CONFIDENCE": 34.01,
+      "TOP_POLICY_COUNT": 20195,
+      "CLOSE_SCORE_SLOPE_COUNT": 25760,
+      "NO_CONFIDENT_INTERVENTION_COUNT": 26815
+    },
+    {
+      "METRIC": "policy_summary",
+      "POLICY": "wall",
+      "COUNT": 36431,
+      "MEAN_SCORE": 26.61,
+      "MIN_SCORE": 0.0,
+      "MAX_SCORE": 100.0,
+      "MEAN_CONFIDENCE": 15.22,
+      "TOP_POLICY_COUNT": 7093,
+      "CLOSE_SCORE_SLOPE_COUNT": 25760,
+      "NO_CONFIDENT_INTERVENTION_COUNT": 26815
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "SOURCE_AREA_HA_MAX",
+      "COUNT": 98301
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "MATERIAL_CLASS",
+      "COUNT": 72862
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "DIST_BUILDING",
+      "COUNT": 72862
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "RELIEF",
+      "COUNT": 58288
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "S_P90",
+      "COUNT": 43716
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "VEG_COVER_PCT",
+      "COUNT": 36431
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "TOE_CONSTRUCTABILITY",
+      "COUNT": 36431
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "FLOWACC_P90",
+      "COUNT": 36431
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "TWI_P90",
+      "COUNT": 36431
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "DIST_TO_CHANNEL",
+      "COUNT": 36431
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "SEEPAGE_PRESENT",
+      "COUNT": 36431
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "AVAILABLE_TOE_SPACE",
+      "COUNT": 36431
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "REL_POS_MEAN",
+      "COUNT": 33313
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "SOURCE_S_P90_MAX",
+      "COUNT": 32767
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "HIGH_PCT",
+      "COUNT": 14748
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "ASP_CONC",
+      "COUNT": 14572
+    },
+    {
+      "METRIC": "missing_factor",
+      "POLICY": "ALL",
+      "FACTOR": "CURV_MEAN",
+      "COUNT": 14572
+    }
+  ],
+  "disclaimer": "Mitigation screening, not engineering design. Suitability percentages represent match to transparent screening criteria; they are not probability of success, expected risk reduction, structural adequacy or construction recommendation.",
+  "sample_export": false,
+  "browser_loading": "Dashboard loads mitigation_index.json at startup and fetches per-slope detail JSON on selection."
+}

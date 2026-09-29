@@ -1,0 +1,133 @@
+{
+  "generated_at": "2026-09-29T06:33:37.140867+00:00",
+  "status": "pass",
+  "sample_export": false,
+  "analysis_crs_expected": "EPSG:32643",
+  "display_crs_expected": "EPSG:4326",
+  "layers": {
+    "slope_units": {
+      "required": true,
+      "present": true,
+      "feature_count": 36431,
+      "crs": "EPSG:32643",
+      "geometry_types": {
+        "Polygon": 36431
+      },
+      "bounds": [
+        322783.6951330697,
+        2005085.7353587812,
+        443050.0787564508,
+        2099783.205312975
+      ],
+      "missing_required_fields": [],
+      "null_required_fields": {},
+      "invalid_geometry_count": 0,
+      "empty_geometry_count": 0
+    },
+    "source_zones": {
+      "required": true,
+      "present": true,
+      "feature_count": 4772,
+      "crs": "EPSG:32643",
+      "geometry_types": {
+        "Polygon": 4772
+      },
+      "bounds": [
+        322783.6951330697,
+        2018571.3233925859,
+        379888.5967096391,
+        2099783.205312975
+      ],
+      "missing_required_fields": [],
+      "null_required_fields": {},
+      "invalid_geometry_count": 0,
+      "empty_geometry_count": 0
+    },
+    "runout_paths": {
+      "required": true,
+      "present": true,
+      "feature_count": 25747,
+      "crs": "EPSG:32643",
+      "geometry_types": {
+        "LineString": 25747
+      },
+      "bounds": [
+        322828.4481907316,
+        2018466.899591439,
+        380022.8558826248,
+        2099738.452255341
+      ],
+      "missing_required_fields": [],
+      "null_required_fields": {},
+      "invalid_geometry_count": 0,
+      "empty_geometry_count": 0
+    },
+    "runout_envelopes": {
+      "required": true,
+      "present": true,
+      "feature_count": 4772,
+      "crs": "EPSG:32643",
+      "geometry_types": {
+        "MultiPolygon": 4772
+      },
+      "bounds": [
+        322783.6951330697,
+        2018436.899591439,
+        380052.8558826248,
+        2099783.205312975
+      ],
+      "missing_required_fields": [],
+      "null_required_fields": {},
+      "invalid_geometry_count": 0,
+      "empty_geometry_count": 0
+    },
+    "exposed_buildings": {
+      "required": false,
+      "present": true,
+      "feature_count": 5908,
+      "crs": "EPSG:32643",
+      "geometry_types": {
+        "MultiPolygon": 5908
+      },
+      "bounds": [
+        324295.9385784365,
+        2028012.8024069963,
+        374072.37229577056,
+        2099147.835800455
+      ],
+      "missing_required_fields": [],
+      "null_required_fields": {},
+      "invalid_geometry_count": 0,
+      "empty_geometry_count": 0
+    },
+    "ridges": {
+      "required": false,
+      "present": true,
+      "feature_count": 2036,
+      "crs": "EPSG:32643",
+      "geometry_types": {
+        "LineString": 2036
+      },
+      "bounds": [
+        323082.04885081376,
+        2008099.1079061553,
+        440633.4136427102,
+        2099646.5825223434
+      ],
+      "missing_required_fields": [],
+      "null_required_fields": {},
+      "invalid_geometry_count": 0,
+      "empty_geometry_count": 0
+    }
+  },
+  "joins": {
+    "source_zones.SU_ID -> slope_units.SU_ID": 0,
+    "runout_paths.SU_ID -> slope_units.SU_ID": 0,
+    "runout_envelopes.SU_ID -> slope_units.SU_ID": 0,
+    "exposed_buildings.SU_ID -> slope_units.SU_ID": 0,
+    "runout_paths.SOURCE_ID -> source_zones.SOURCE_ID": 0,
+    "runout_envelopes.SOURCE_ID -> source_zones.SOURCE_ID": 0
+  },
+  "errors": [],
+  "warnings": []
+}

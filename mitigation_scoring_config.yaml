@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "description": "Initial PMRDA mitigation suitability screening configuration. Values are transparent decision-model assumptions for Level A screening and require sensitivity testing/local engineering review.",
+  "score_meaning": "Percentage match to explicitly defined screening conditions for an intervention; not probability of success, risk reduction, factor of safety, or construction recommendation.",
+  "close_score_delta": 10,
+  "priority": {
+    "factors": {
+      "HIGH_PCT": {"weight": 0.30, "function": "increasing", "low": 20, "high": 80},
+      "MEAN_LSI": {"weight": 0.20, "function": "increasing", "low": 2, "high": 5},
+      "MAX_RUN_M": {"weight": 0.20, "function": "increasing", "low": 100, "high": 1500},
+      "N_BLD_TOT": {"weight": 0.30, "function": "increasing", "low": 0, "high": 25}
+    }
+  },
+  "policies": {
+    "jute": {
+      "label": "Jute/coir + vegetation",
+      "short_label": "Jute + vegetation",
+      "confidence_caps": {"MATERIAL_CLASS": 70, "VEG_COVER_PCT": 65},
+      "factors": {
+        "S_P90": {"label": "P90 slope", "weight": 0.25, "function": "triangular", "low": 15, "optimum": 28, "high": 45, "positive": "Slope steepness is within a practical bioengineering screening range.", "negative": "Slope steepness is outside the preferred bioengineering screening range."},
+        "RELIEF": {"label": "Relief", "weight": 0.15, "function": "decreasing", "low": 40, "high": 180, "positive": "Moderate relief supports shallow surface-treatment screening.", "negative": "High relief reduces confidence in simple surface treatment."},
+        "HIGH_PCT": {"label": "High susceptibility share", "weight": 0.15, "function": "triangular", "low": 10, "optimum": 40, "high": 90, "positive": "Susceptibility composition is consistent with surface-treatment investigation.", "negative": "Susceptibility composition is not an ideal standalone indicator for bioengineering."},
+        "SOURCE_AREA_HA_MAX": {"label": "Largest source area", "weight": 0.15, "function": "decreasing", "low": 0.1, "high": 5.0, "positive": "Source area is not excessively large for screening surface treatment.", "negative": "Large source area reduces confidence in simple surface treatment."},
+        "VEG_COVER_PCT": {"label": "Vegetation cover", "weight": 0.15, "function": "triangular", "low": 5, "optimum": 35, "high": 85, "data_source": "vegetation/LULC", "positive": "Vegetation/bare-ground evidence supports bioengineering screening.", "negative": "Vegetation condition is outside the preferred range or unavailable."},
+        "MATERIAL_CLASS": {"label": "Surface material", "weight": 0.15, "function": "categorical", "scores": {"SOIL": 100, "WEATHERED_ROCK": 70, "MIXED": 55, "ROCK": 20}, "data_source": "geology/material", "positive": "Material class is favourable for bioengineering.", "negative": "Material class limits bioengineering confidence or is unavailable."}
+      }
+    },
+    "shotcrete": {
+      "label": "Shotcrete / sprayed concrete",
+      "short_label": "Shotcrete",
+      "confidence_caps": {"MATERIAL_CLASS": 60},
+      "factors": {
+        "S_P90": {"label": "P90 slope", "weight": 0.25, "function": "increasing", "low": 25, "high": 50, "positive": "Steep slope face is consistent with shotcrete screening conditions.", "negative": "Slope is not steep enough to strongly support shotcrete screening."},
+        "RELIEF": {"label": "Relief", "weight": 0.15, "function": "triangular", "low": 20, "optimum": 90, "high": 250, "positive": "Relief is within a range where surface stabilization may be relevant.", "negative": "Relief suggests either low need or large-scale instability beyond simple shotcrete."},
+        "ASP_CONC": {"label": "Aspect coherence", "weight": 0.10, "function": "increasing", "low": 0.3, "high": 0.9, "positive": "Coherent slope orientation supports treatment-face interpretation.", "negative": "Low aspect coherence weakens interpretation of a discrete treatment face."},
+        "SOURCE_S_P90_MAX": {"label": "Maximum source P90 slope", "weight": 0.20, "function": "increasing", "low": 25, "high": 50, "positive": "Candidate source contains steep terrain.", "negative": "Candidate source is not strongly steep by the configured threshold."},
+        "MATERIAL_CLASS": {"label": "Surface material", "weight": 0.30, "function": "categorical", "scores": {"ROCK": 100, "WEATHERED_ROCK": 85, "MIXED": 55, "SOIL": 20}, "data_source": "geology/material", "positive": "Material class supports shotcrete screening.", "negative": "Unknown or unfavourable material class limits shotcrete confidence."}
+      }
+    },
+    "wall": {
+      "label": "Retaining / reinforcement wall",
+      "short_label": "Retaining wall",
+      "confidence_caps": {"TOE_CONSTRUCTABILITY": 60},
+      "factors": {
+        "REL_POS_MEAN": {"label": "Source relative position", "weight": 0.20, "function": "decreasing", "low": 0.2, "high": 0.8, "positive": "Lower source position is more consistent with toe/support intervention screening.", "negative": "Upper-slope source position weakens retaining-wall suitability."},
+        "RELIEF": {"label": "Relief", "weight": 0.20, "function": "triangular", "low": 20, "optimum": 80, "high": 220, "positive": "Relief is within a range where retaining/support options may be considered.", "negative": "Relief suggests low need or scale beyond simple wall screening."},
+        "SOURCE_AREA_HA_MAX": {"label": "Largest source area", "weight": 0.15, "function": "decreasing", "low": 0.1, "high": 8.0, "positive": "Source area does not strongly penalize simple support screening.", "negative": "Very large source area reduces confidence in simple wall treatment."},
+        "DIST_BUILDING": {"label": "Toe/building proximity", "weight": 0.15, "function": "decreasing", "low": 25, "high": 250, "data_source": "building/toe context", "positive": "Nearby exposed assets may increase relevance of support investigation.", "negative": "Toe/building proximity is unavailable or not supportive."},
+        "TOE_CONSTRUCTABILITY": {"label": "Toe constructability", "weight": 0.30, "function": "categorical", "scores": {"GOOD": 100, "MODERATE": 65, "POOR": 25}, "data_source": "field/constructability", "positive": "Toe constructability supports wall screening.", "negative": "Toe constructability is unknown or limiting."}
+      }
+    },
+    "drainage": {
+      "label": "Drainage modification",
+      "short_label": "Drainage",
+      "confidence_caps": {"SEEPAGE_PRESENT": 70, "TWI_P90": 75},
+      "factors": {
+        "FLOWACC_P90": {"label": "P90 flow accumulation", "weight": 0.25, "function": "increasing", "low": 100, "high": 5000, "data_source": "DEM hydrology", "positive": "High flow accumulation supports drainage investigation.", "negative": "Flow accumulation evidence is weak or unavailable."},
+        "TWI_P90": {"label": "P90 topographic wetness", "weight": 0.20, "function": "increasing", "low": 6, "high": 14, "data_source": "DEM hydrology", "positive": "Wetness proxy supports drainage investigation.", "negative": "Wetness proxy is weak or unavailable."},
+        "CURV_MEAN": {"label": "Curvature/convergence proxy", "weight": 0.15, "function": "decreasing", "low": -0.5, "high": 0.5, "positive": "Curvature proxy is consistent with convergent terrain.", "negative": "Curvature proxy does not strongly indicate convergence."},
+        "DIST_TO_CHANNEL": {"label": "Distance to channel", "weight": 0.10, "function": "decreasing", "low": 25, "high": 300, "data_source": "streams/channels", "positive": "Channel proximity supports hydrological context.", "negative": "Channel proximity is unavailable or weak."},
+        "SEEPAGE_PRESENT": {"label": "Field seepage", "weight": 0.30, "function": "categorical", "scores": {"YES": 100, "NO": 20}, "data_source": "field", "positive": "Observed seepage strongly supports drainage screening.", "negative": "Field seepage evidence is unavailable or absent."}
+      }
+    },
+    "geometry": {
+      "label": "Slope geometry modification",
+      "short_label": "Geometry modification",
+      "confidence_caps": {"AVAILABLE_TOE_SPACE": 65},
+      "factors": {
+        "S_P90": {"label": "P90 slope", "weight": 0.30, "function": "increasing", "low": 25, "high": 50, "positive": "Steep slope suggests potential relevance of geometry modification.", "negative": "Slope is not steep enough to strongly support regrading/geometry screening."},
+        "RELIEF": {"label": "Relief", "weight": 0.20, "function": "increasing", "low": 50, "high": 250, "positive": "High relief indicates terrain scale relevant to geometry modification.", "negative": "Relief is not high enough to strongly support geometry modification."},
+        "SOURCE_AREA_HA_MAX": {"label": "Largest source area", "weight": 0.15, "function": "increasing", "low": 0.25, "high": 8.0, "positive": "Large steep source area increases relevance of geometry modification investigation.", "negative": "Source area is small for geometry modification screening."},
+        "AVAILABLE_TOE_SPACE": {"label": "Available land/ROW", "weight": 0.25, "function": "categorical", "scores": {"GOOD": 100, "MODERATE": 60, "POOR": 15}, "data_source": "ROW/constructability", "positive": "Available space supports geometry modification screening.", "negative": "Available space is unknown or limiting."},
+        "DIST_BUILDING": {"label": "Nearby development penalty", "weight": 0.10, "function": "increasing", "low": 25, "high": 250, "data_source": "building/toe context", "positive": "Nearby development does not strongly constrain geometry modification.", "negative": "Nearby development may restrict excavation/regrading."}
+      }
+    }
+  },
+  "complementary_rules": [
+    {"if": {"shotcrete": 70, "drainage": 60}, "label": "Shotcrete + drainage investigation"},
+    {"if": {"wall": 65, "drainage": 60}, "label": "Retaining structure + drainage investigation"},
+    {"if": {"geometry": 70, "drainage": 60}, "label": "Geometry modification + drainage investigation"},
+    {"if": {"jute": 65, "drainage": 55}, "label": "Jute/coir + surface drainage investigation"},
+    {"if": {"geometry": 65, "jute": 55}, "label": "Geometry modification + revegetation investigation"}
+  ]
+}

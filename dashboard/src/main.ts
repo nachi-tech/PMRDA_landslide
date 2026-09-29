@@ -36,7 +36,7 @@ const state: DashboardState = {
   },
 };
 
-const dashboardMap = createMap('map');
+const dashboardMap = createMap('map','mapboxSatellite');
 const { map } = dashboardMap;
 let activeBasemapLayer = dashboardMap.basemapLayer;
 const statusEl = document.getElementById('map-status') as HTMLElement;

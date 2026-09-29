@@ -1,16 +1,23 @@
 import type { DashboardData, ExportValidationReport, MitigationIndex, MitigationSlopeResult, ModelMetadata } from './types';
 
+function withBase(path: string): string {
+  if (/^https?:\/\//i.test(path)) return path;
+  const normalizedPath = path.replace(/^\//, '');
+  return `${import.meta.env.BASE_URL}${normalizedPath}`;
+}
+
 async function fetchJson<T>(path: string, required = true): Promise<T | null> {
-  const response = await fetch(path);
+  const url = withBase(path);
+  const response = await fetch(url);
   if (!response.ok) {
     if (!required && response.status === 404) return null;
-    throw new Error(`Could not load ${path}: ${response.status} ${response.statusText}`);
+    throw new Error(`Could not load ${url}: ${response.status} ${response.statusText}`);
   }
   try {
     return (await response.json()) as T;
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    throw new Error(`Could not parse ${path}: ${message}`);
+    throw new Error(`Could not parse ${url}: ${message}`);
   }
 }
 

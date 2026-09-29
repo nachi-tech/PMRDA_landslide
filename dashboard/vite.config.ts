@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: '/PMRDA_landslide/',
   server: {
     port: 5173,
   },

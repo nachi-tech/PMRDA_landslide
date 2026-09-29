@@ -29,7 +29,7 @@ export const basemaps: Record<BasemapKey, BasemapDefinition> = {
   cartoLight: {
     label: 'Carto Light',
     createLayer: () =>
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=cb1_4366_1_387277ed1b6ff3aff90d856c', {
         maxZoom: 20,
         attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
       }),
@@ -37,7 +37,7 @@ export const basemaps: Record<BasemapKey, BasemapDefinition> = {
   cartoDark: {
     label: 'Carto Dark',
     createLayer: () =>
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=cb1_4366_1_387277ed1b6ff3aff90d856c', {
         maxZoom: 20,
         attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
       }),

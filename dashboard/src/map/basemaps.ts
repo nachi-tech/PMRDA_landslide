@@ -1,6 +1,6 @@
 import L from 'leaflet';
 
-export type BasemapKey = 'osm' | 'cartoLight' | 'cartoDark' | 'mapboxStreets' | 'mapboxSatellite';
+export type BasemapKey = 'mapboxSatellite' | 'mapboxStreets' | 'osm' | 'cartoLight' | 'cartoDark' ;
 
 export interface BasemapDefinition {
   label: string;
